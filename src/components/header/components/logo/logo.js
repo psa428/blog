@@ -1,9 +1,14 @@
+import { Link } from 'react-router-dom';
+import { Icon } from '../../../icon/icon';
 import styled from 'styled-components';
-import { FcCollapse } from 'react-icons/fc';
+
+
 
 const LargeText = styled.div`
-    font-size:  32px;
-    font-weight:    bold;
+    font-size:  48px;
+    font-weight:  600;
+    line-height:    48px;
+    margin-top: 17px;
 `;
 
 const SmallText = styled.div`
@@ -12,17 +17,19 @@ const SmallText = styled.div`
 `;
 
 const LogoContainer = ({ className }) => (
-    <div className={className}>
-        <i class="fc FcCollapse" aria-hidden="true"></i>
+    <Link className={className} to="/" >
+        <Icon id="fa-code" size="70px" margin="0 10 0 0" />
+        
         <div>
             <LargeText>Блог</LargeText>
             <SmallText>веб-разработчика</SmallText>
 
         </div>
-    </div>
+    </Link>
 );
 
 export const Logo = styled(LogoContainer)`
     display:    flex;  
-    margin-top: -14px; 
+    margin-top: -21px; 
+   
 `;

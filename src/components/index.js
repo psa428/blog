@@ -1,3 +1,4 @@
 export * from './header/header';
-export * from './logo/logo';
-export * from './control-panel/control-panel';
+export * from './header/components/logo/logo';
+export * from './header/components/control-panel/control-panel';
+export * from './icon/icon';

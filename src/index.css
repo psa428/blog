@@ -1,4 +1,4 @@
-/* @import url('fonts/font-awesome.css'); */
+@import url('fonts/font-awesome.css');
 
 * {
   box-sizing: border-box;
@@ -21,6 +21,11 @@ html,
 body,
 #root {
   height: 100%;
+}
+
+a {
+  color:  #000;
+  text-decoration: none;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

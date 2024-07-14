@@ -15,7 +15,7 @@ const HeaderContainer = ({ className }) => (
           Веб-технологии<br/>
           Написание кода<br/>
           Разбор ошибок
-        </Discription>
+        </Discription> 
         <ControlPanel />
       </header>
   );

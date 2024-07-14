@@ -32,8 +32,10 @@ const StyleHeader = styled(Header)`
 function App() {
   return (
     <AppColumn>
+      
       <StyleHeader />
       <Content>
+      <i className='fa fa-camera-retro'></i>
           <H2>Контент страницы</H2>
           <Routes>
             <Route path='/' element={<div>Главная страница</div>} />
