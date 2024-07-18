@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
- import { Header} from './components'
+ import { Header} from './components';
+ import { Autorization } from './pages/autorization/autorization';
 import styled from 'styled-components';
 
 const AppColumn = styled.div`
@@ -35,11 +36,11 @@ function App() {
       
       <StyleHeader />
       <Content>
-      <i className='fa fa-camera-retro'></i>
+      
           <H2>Контент страницы</H2>
           <Routes>
             <Route path='/' element={<div>Главная страница</div>} />
-            <Route path='/login' element={<div>Авторизация</div>} />
+            <Route path='/login' element={<Autorization />} />
             <Route path='/register' element={<div>Регистрация</div>} />
             <Route path='/users' element={<div>Пользователи</div>} />
             <Route path='/post' element={<div>Новая статья</div>} />

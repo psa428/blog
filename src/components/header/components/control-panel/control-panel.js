@@ -1,39 +1,74 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Icon} from '../../../../components';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Icon} from '../../../../components';
 import styled from "styled-components";
+import { selectUserLogin, selectUserRole, selectUserSession } from '../../../../selectors';
+import { ROLE } from '../../../../bff/session';
+import { logout } from '../../../../actions';
 
 const RightAligned = styled.div`
     display:    flex;
     justify-content:    flex-end;
+    align-itrms:    center;
 
 `;
-
-const StyledLink = styled(Link)`
-    display:    flex;
-    justify-content:    center;
-    font-size:  10px;
-    width:  100px;
-    height: 20px;
-   
-    border: 1px solid #000;
-    background-color:   #eee;
+const StyledIcon = styled.div`
+    &:hover {
+        cursor: pointer;
+    }
 `;
-const StyleButton = styled.div`
-    cursor: pointer;
+
+const StyledBackIcon = styled.div`
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
+const UserName = styled.div`
+    font-size:  18ps;
+    font-weight:    bold;
+
 `;
 
 
 const ControlPanelContainer = ({ className }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const roleId = useSelector(selectUserRole);
+    const login = useSelector(selectUserLogin);
+    const session = useSelector(selectUserSession);
+
+    console.log(`roleId = ${roleId}`);
+
     return (
         <div className={className}>
             <RightAligned>
-                <StyledLink to="/login">Войти</StyledLink>
+                
+                    
+                    {roleId === ROLE.GUEST ? (
+                        <Button>
+                            <Link to="/login">Войти</Link>
+                        </Button>
+                    ) : (
+                        <>
+                            <UserName>{login}</UserName>  
+                            <StyledIcon>                           
+                                <Icon 
+                                    id="fa-sign-out" 
+                                    margin="0 0 0 10px" 
+                                    onClick = {() => dispatch(logout(session))}
+                                    
+                                 />
+                            </StyledIcon>
+      
+                        </>
+                    )}
+        
             </RightAligned>
             <RightAligned>
-                <StyleButton onClick = {() => navigate(-1)}>
+                <StyledBackIcon onClick = {() => navigate(-1)}>
                     <Icon id="fa-backward" margin="10px 0 0 0" />
-                </StyleButton>
+                </StyledBackIcon>
                 
                 <Link to="/post"><Icon id="fa-file-text-o" margin="10px 0 0 17px" /></Link>
                 <Link to="/users"><Icon id="fa-users" margin="10px 0 0 17px" /></Link>
