@@ -3,17 +3,17 @@ import { Link, Navigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { server } from '../../bff/server';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AuthFormError, Input, Button } from '../../components';
 import { useResetForm } from '../../hooks';
 
 import styled from 'styled-components';
 import { setUser } from '../../actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../bff/session';
 
-const authFormSchema = yup.object().shape({
+const regFormSchema = yup.object().shape({
     login:  yup.string()
         .required('Введите логин')
         .matches(/^\w+$/, 'Неверный логин. Допускаются только буквы и цифры')
@@ -23,19 +23,20 @@ const authFormSchema = yup.object().shape({
         .required ('Введите пароль') 
         .matches(/^[\w#%]+$/, 'Неверный пароль. Допускаяются буквы, цифры и символы # %')
         .min(6, 'Длина пароля не менее 8 символов')  
-        .max(15, 'Длина пароле не более 15 символов')
+        .max(15, 'Длина пароле не более 15 символов'),
+    passcheck:    yup
+        .string()
+        .required('Заполните повтор пароля')
+        .oneOf([yup.ref('password'), null], 'Повтор пароля не совпадает'),
 
 
 });
 
-const StyledLink = styled(Link)`
-    text-align: center;
-    text-decoration:    underline;
-    margin: 20px 0;
-    font-size:  18px;
-`;
 
-const AutorizationContainer = ({ className }) => {
+
+ 
+
+const RegistrationContainer = ({ className }) => {
     const {
         register,
         reset,
@@ -46,37 +47,36 @@ const AutorizationContainer = ({ className }) => {
         defaultValues:  {
             login:  '',
             password:   '',
+            passcheck:  '',
         },
-        resolver:   yupResolver(authFormSchema),
+        resolver:   yupResolver(regFormSchema),
 
     });
 
-    const [serverError, setServerError] = useState(null);
-
+    const [servseError, setServerError] = useState(null);
+    useResetForm(reset);
     
     const dispatch = useDispatch();
 
     const roleId = useSelector(selectUserRole);
 
-    useResetForm(reset);
+    
 
     const onSubmit = ({ login, password}) => {
         
-        server.authorize(login, password).then(({error, res}) => {
-            console.log(`in AutorizationContainer error = ${error}`);
+        server.register(login, password).then(({error, res}) => {
+            console.log(`in RegistrationContainer error = ${error} `);
+            
             if (error) {  
                 setServerError(`Ошибка запроса: ${error}`);
                 return;
             }
-
-            dispatch(setUser(res));
-        })
-
+                dispatch(setUser(res));
+        });
     };
+    const formError = errors.login?.message || errors?.password?.message || errors?.passcheck?.message ;
 
-    const formError = errors.login?.message || errors?.password?.message ;
-
-    const errorMessage = formError || serverError;
+    const errorMessage = formError || servseError;
 
     if (roleId !== ROLE.GUEST) {
         return <Navigate to="/"></Navigate>
@@ -85,7 +85,7 @@ const AutorizationContainer = ({ className }) => {
 
     return (
         <div className={className}>
-            <h2>Авторизация</h2>
+            <h2>Регистрация</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <Input 
                     type="text" 
@@ -99,11 +99,17 @@ const AutorizationContainer = ({ className }) => {
                         onChange: () => setServerError(null),
                     })}
                 />
+                <Input type="password" 
+                    placeholder="Проверка пароля..." 
+                    {...register('passcheck', {
+                        onChange: () => setServerError(null),
+                    })}
+                />
                 <Button type="submit" disabled={!!formError}>
-                    Авторизоваться
+                    Зарегистрироваться
                 </Button>
                 {errorMessage && <AuthFormError>{errorMessage}</AuthFormError>}
-                <StyledLink to="/register">Регистрация</StyledLink>
+                
                 
             </form>
 
@@ -113,7 +119,7 @@ const AutorizationContainer = ({ className }) => {
     );
 };
 
-export const Autorization = styled(AutorizationContainer)`
+export const Registration = styled(RegistrationContainer)`
     display:    flex;
     flex-direction: column;
     align-items:   center;

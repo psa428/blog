@@ -1,52 +1,85 @@
 {
-    "users": [
-        {
-            "id":   "001",
-            "login": "anton",
-            "password": "qwerty123",
-            "registred_at": "2050-09-22",
-            "role_id":  0
-        }   
-    ],
-
-    "roles": [
-        {
-           "id":   0,
-           "name":  "Администратор"  
-        },
-        {
-            "id":   1,
-            "name":  "модератор"  
-         },
-         {
-            "id":   2,
-            "name":  "Читатель"  
-         },
-         {
-            "id":   3,
-            "name":  "Гость"  
-         } 
-    ],
-    "posts": [
-        {
-            "id":           "001",
-            "title":        "Задача организации",
-            "image_url":    "",
-            "content":      "Это контент",
-            "published_at":     "2024-06-21"
-        },
-        {
-            "id":           "002",
-            "title":        "Задача организации",
-            "image_url":    "",
-            "content":      "Это тоже контент",
-
-            "published_at":     "2024-06-21"
-        }
-    ],
-    "comments": [
-        {
-            
-        }
-    ]
+  "users": [
+    {
+      "id": "001",
+      "login": "anton",
+      "password": "qwerty123",
+      "registred_at": "2050-09-22",
+      "role_id": 0
+    },
+    {
+      "id": "2fe2",
+      "login": "ivan",
+      "password": "qwerty123",
+      "registred_at": "2048-03-04 14:00",
+      "role_id": 2
+    },
+    {
+      "id": "287a",
+      "login": "ivanoff",
+      "password": "qwerty123",
+      "registred_at": "2053-10-27 05:37",
+      "role_id": 2
+    },
+    {
+      "id": "c177",
+      "login": "smirnoff",
+      "password": "qwerty123",
+      "registred_at": "2037-02-28 14:54",
+      "role_id": 2
+    },
+    {
+      "id": "e05e",
+      "login": "sidor",
+      "passsword": "qwerty123",
+      "registred_at": "2046-11-17 06:39",
+      "role_id": 2
+    },
+    {
+      "id": "b2a6",
+      "login": "ivan3",
+      "passsword": "qwerty123",
+      "registred_at": "2037-05-13 10:23",
+      "role_id": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": "0",
+      "name": "Администратор"
+    },
+    {
+      "id": "1",
+      "name": "модератор"
+    },
+    {
+      "id": "2",
+      "name": "Читатель"
+    },
+    {
+      "id": "3",
+      "name": "Гость"
+    }
+  ],
+  "posts": [
+    {
+      "id": "001",
+      "title": "Задача организации",
+      "image_url": "",
+      "content": "Это контент",
+      "published_at": "2024-06-21"
+    },
+    {
+      "id": "002",
+      "title": "Задача организации",
+      "image_url": "",
+      "content": "Это тоже контент",
+      "published_at": "2024-06-21"
+    }
+  ],
+  "comments": [
+    {
+      "id": "b746"
+    }
+  ]
 }
