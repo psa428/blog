@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { setUser } from '../../actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserRole } from '../../selectors';
-import { ROLE } from '../../bff/session';
+import { ROLE } from '../../bff/operations/constants/role';
 
 const authFormSchema = yup.object().shape({
     login:  yup.string()
@@ -63,7 +63,7 @@ const AutorizationContainer = ({ className }) => {
     const onSubmit = ({ login, password}) => {
         
         server.authorize(login, password).then(({error, res}) => {
-            console.log(`in AutorizationContainer error = ${error}`);
+            
             if (error) {  
                 setServerError(`Ошибка запроса: ${error}`);
                 return;

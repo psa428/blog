@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { setUser } from '../../actions';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { selectUserRole } from '../../selectors';
-import { ROLE } from '../../bff/session';
+import { ROLE } from '../../bff/operations/constants/role';
 
 const regFormSchema = yup.object().shape({
     login:  yup.string()
@@ -65,7 +65,7 @@ const RegistrationContainer = ({ className }) => {
     const onSubmit = ({ login, password}) => {
         
         server.register(login, password).then(({error, res}) => {
-            console.log(`in RegistrationContainer error = ${error} `);
+            
             
             if (error) {  
                 setServerError(`Ошибка запроса: ${error}`);

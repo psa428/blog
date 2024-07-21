@@ -1,74 +1,13 @@
-import { getUser } from "./get-user";
-import { addUser } from "./add-user";
-
-import { sessions } from "./session/sessions";
-
-
+import { logout, fetchRoles, fetchUsers, authorize, register, updateUserRole, removeUser } from "./operations";
 
 
 export const server = {
-    async logout(session) {
-        sessions.remove(session);
-    },
+    authorize,
+    logout,
+    register,
+    fetchUsers,
+    fetchRoles, 
+    updateUserRole,
+    removeUser,
     
-    async authorize(authLogin, authPassword) {
-        
-        const user = await getUser(authLogin);
-
-        if (!user) {
-            return {
-                error: 'Пользователь не найден',
-                res:    null,
-            };
-        };
-
-        
-       
-        if (authPassword !== user.password) {
-            console.log(`in server.autorize authPassword = ${authPassword} user.password = ${user.password}`);
-            console.log(`in server.authorize user.login = ${user.login}`);
-            return {
-                error: 'Неверный пароль',
-                res:    null,
-            };
-        };
-        
-        return {
-            error:  null,
-            res:    {
-                id: user.id,
-                login:  user.login,
-                roleId: user.role_id,
-                session: sessions.create(user),   
-            },  
-        };      
-              
-       
-    },
-    async register(regLogin,regPassword){
-        const existedUser = await getUser(regLogin);
-
-        
-        if (existedUser) {
-            
-            return {
-                error: 'Такой логин уже занят',
-                res:    null,
-            };
-        }
-
-       const user = await addUser(regLogin, regPassword);
-
-       return {
-        error:  null,
-        res:    {
-            id: user.id,
-            login:  user.login,
-            roleId: user.role_id,
-            session: sessions.create(user),   
-        },  
-    }; 
-
-    }
-
 };

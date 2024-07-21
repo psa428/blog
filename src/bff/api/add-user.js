@@ -1,4 +1,4 @@
-import { generateDate } from "./generate-date";
+import { generateDate } from '../utils';
 
 
 export const addUser = (login, password) => 

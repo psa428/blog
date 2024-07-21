@@ -1,5 +1,5 @@
 import { ACTION_TYPE } from '../actions';
-import { ROLE } from "../bff/session";
+import { ROLE } from '../bff/operations/constants/role';
 
 const initialUserState = {
     id: null,
@@ -10,10 +10,10 @@ const initialUserState = {
 };
 
 export const userReducer = (state = initialUserState, action) => {
-    console.log(`in userReducer action.type = ${action.type}`);
+    
     switch (action.type) {
         case ACTION_TYPE.SET_USER: {
-            console.log(`in userReducer action.payload.login = ${action.payload.login}`);
+            
             return {
                 ...state,
                 login: action.payload.login,
@@ -24,7 +24,7 @@ export const userReducer = (state = initialUserState, action) => {
             }
         }
         case ACTION_TYPE.LOGOUT: {
-            console.log(`in userReducer in case action.type = ${action.type}`);
+            
  
             return initialUserState;
         }
