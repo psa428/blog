@@ -7,6 +7,7 @@ import {  useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { useLayoutEffect } from 'react';
 import { setUser } from './actions';
+import { Modal } from './components/modal/modal';
 
 const AppColumn = styled.div`
   display:  flex;
@@ -74,6 +75,7 @@ function App() {
           </Routes>
       </Page>
       <Footer />
+      <Modal />
     
     </AppColumn>
   );

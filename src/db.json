@@ -63,41 +63,6 @@
       "post_id": "001",
       "published_at": "2038-02-24 02:59",
       "content": "My first comment"
-    },
-    {
-      "id": "ea37",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2054-10-28 11:42",
-      "content": "My first comment 2"
-    },
-    {
-      "id": "cc5c",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2048-11-19 22:57",
-      "content": "My second comment"
-    },
-    {
-      "id": "77a1",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2047-01-03 08:52",
-      "content": "Новый комментарий"
-    },
-    {
-      "id": "ac30",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2063-02-18 02:51",
-      "content": "New comment"
-    },
-    {
-      "id": "99ef",
-      "author_id": "001",
-      "post_id": "001",
-      "published_at": "2064-06-01 18:37",
-      "content": "New comment again"
     }
   ],
   "sessions": [
