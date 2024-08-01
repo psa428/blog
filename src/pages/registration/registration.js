@@ -1,15 +1,16 @@
 import { useForm } from 'react-hook-form';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { server } from '../../bff/server';
-import { useEffect, useState } from 'react';
+// import { server } from '../../bff/server';
+import { server } from '../../bff';
+ import {  useState } from 'react';
 import { AuthFormError, Input, Button } from '../../components';
 import { useResetForm } from '../../hooks';
 
 import styled from 'styled-components';
 import { setUser } from '../../actions';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../bff/operations/constants/role';
 
@@ -72,8 +73,10 @@ const RegistrationContainer = ({ className }) => {
                 return;
             }
                 dispatch(setUser(res));
-        });
-    };
+                sessionStorage.setItem('userData', JSON.stringify(res));
+            })
+        };
+    
     const formError = errors.login?.message || errors?.password?.message || errors?.passcheck?.message ;
 
     const errorMessage = formError || servseError;
@@ -81,7 +84,7 @@ const RegistrationContainer = ({ className }) => {
     if (roleId !== ROLE.GUEST) {
         return <Navigate to="/"></Navigate>
 
-    }
+    };
 
     return (
         <div className={className}>
@@ -118,6 +121,7 @@ const RegistrationContainer = ({ className }) => {
 
     );
 };
+
 
 export const Registration = styled(RegistrationContainer)`
     display:    flex;
