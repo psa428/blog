@@ -1,28 +1,33 @@
-import { IconBase } from "react-icons";
+import { useNavigate } from "react-router-dom";
 import { Icon } from "../../../../components";
+import { SpecialPanel } from '../special-panel/special-panel';
 import styled from "styled-components";
 
 
 const PostContentContainer = ({ 
     className, 
-    post:   {id, title, imageUrl, content, publishedAt, },
+    post:   { id, title, imageUrl, content, publishedAt, },
     
 }) => {
+    const navigate = useNavigate();
     
     return (
         <div className={className}>
-            <img src={imageUrl} alt={title} />
+            <img src={imageUrl} alt={title}  />
             <h2>{title}</h2>
-            <div className="special-panel">
-                <div className="published-at">
-                    <Icon id="fa-calendar-o" size="18px"  margin="0 7px 0 0" onClick={() => {}} />  
-                    {publishedAt}  
-                </div>
-                <div className="buttons">
-                    <Icon id="fa-pencil-square-o" size="21px"  margin="0 20px 0 0" onClick={() => {}} />  
-                    <Icon id="fa-trash-o"  onClick={() => {}} />  
-                </div>
-            </div>
+            <SpecialPanel 
+                publishedAt={publishedAt} 
+                margin="-20px 0 20px" 
+                editButton={
+                    <Icon
+                        id="fa-pencil-square-o"
+                        size="21px"
+                        margin="0 10px 0 0"
+                        onClick={() => navigate(`/post/${id}/edit`)}
+                    />
+                } 
+            />
+            
             <div className="post-text">{content}</div>
 
         </div>
@@ -37,32 +42,9 @@ export const PostContent = styled(PostContentContainer)`
         margin: 0 20px 10px 0;
     } 
 
-    &   .special-panel {
-        display:    flex;
-        justify-content:    space-between;
-        margin: -20px 0 20px;
-        
-    }
-
-    & .published-at {
-        display:    flex;
-        font-size:  18px;
-    }
-
-    & i {
-        position:   relative;
-        top:    -1px;
-        
-    }
-
-    & .buttons {
-        display:    flex;
-        font-size:  21px;
-        
-    }
-
     & .post-text {
         font-size:  18px;
+        white-space:    pre-line;
     }
 
 `;
