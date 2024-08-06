@@ -24,7 +24,7 @@ const PostContainer = ({ className }) => {
 
     useLayoutEffect(() => {
         
-        if (isCreating) {
+        if (!isCreating) {
             return;
         }
 
