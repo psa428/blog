@@ -42,7 +42,8 @@ const UserRowContainer = ({ className, id, login, registredAt, roleId: userRoleI
                             : <></>
                         ))}
                     </select>
-                        <Icon id="fa-floppy-o"  
+                        <Icon
+                            id="fa-floppy-o"  
                             margin="0 0 0 10px"   
                             disabled={isSaveButtonDisabled}    
                             onClick={() => onRoleSave(id, selectedRoleId)} 
