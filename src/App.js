@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import {  useDispatch } from 'react-redux';
  import { Header} from './components';
  import { Post } from './pages/post/post';
- import { Autorization, Users } from './pages';
+ import { Autorization, Main, Users } from './pages';
  import { Registration } from './pages';
 import styled from 'styled-components';
 import { useLayoutEffect } from 'react';
@@ -63,7 +63,7 @@ function App() {
       
           <H2>Контент страницы</H2>
           <Routes>
-            <Route path='/' element={<div>Главная страница</div>} />
+            <Route path='/' element={<Main />} />
             <Route path='/login' element={<Autorization />} />
             <Route path='/register' element={<Registration />} />
             <Route path='/users' element={<Users />} />
