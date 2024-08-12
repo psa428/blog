@@ -5,5 +5,6 @@ export * from './icon/icon';
 export * from './input/input';
 export * from './button/button';
 export * from './auth-form-error/auth-form-error';
-export * from './content/content';
+export * from './private-content/private-content';
 export * from './modal/modal';
+export * from './error/error';

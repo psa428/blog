@@ -7,12 +7,10 @@ const Div = styled.div`
 `;
 
 
-export const Content = ({ children, error }) => 
-    error ? (
+export const Error = ({ error }) => 
+    error && (
          <Div>
             <h2>Ошибка</h2>
             <div>{error}</div>
         </Div>
-     ) : (
-        children
      );   
