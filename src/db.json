@@ -140,6 +140,13 @@
       "post_id": "002",
       "published_at": "2049-12-04 04:56",
       "content": "Second comment"
+    },
+    {
+      "author_id": "2fe2",
+      "post_id": "002",
+      "published_at": "2036-06-04 11:59",
+      "content": "Комментарий Ивана",
+      "id": "lI9zbz5"
     }
   ],
   "sessions": [
@@ -296,6 +303,17 @@
         "roleId": 0
       },
       "id": "Zakb9Yg"
+    },
+    {
+      "hash": "0.69461486754246237751431181095540523529052734375000",
+      "user": {
+        "id": "2fe2",
+        "login": "ivan",
+        "password": "qwerty123",
+        "registredAt": "2048-03-04 14:00",
+        "roleId": 1
+      },
+      "id": "Su3fy1e"
     }
   ]
 }

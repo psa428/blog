@@ -8,7 +8,7 @@ import { PrivateContent } from "../../components";
 import { useServerRequest } from "../../hooks";
 import { RESET_POST_DATA } from "../../actions";
 import { loadPostAsync } from "../../actions/load-post-async";
-import { selectPost } from "../../selectors";
+import { selectPost, selectUserRole } from "../../selectors";
 import styled from "styled-components";
 import { PostForm } from "./components/post-form/post-form";
 import { ROLE } from "../../bff/constants";
@@ -25,6 +25,7 @@ const PostContainer = ({ className }) => {
     const requestServer = useServerRequest();
 
     const post =  useSelector(selectPost);
+    
 
 
     useLayoutEffect(() => {
@@ -49,6 +50,8 @@ const PostContainer = ({ className }) => {
     // if (isLoading) {
     //     return null;
     // }
+
+    
     
     const SpecificPostPage = isCreating || isEditing ? (
         <PrivateContent access={[ROLE.ADMIN]} >
