@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; 
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Icon } from "../../../../components";
@@ -7,6 +8,7 @@ import styled from "styled-components";
 import { selectUserId, selectUserRole } from "../../../../selectors";
 import { addCommentAsync } from "../../../../actions";
 import { ROLE } from "../../../../bff/constants";
+import { PROP_TYPE } from '../../../../constants';
 
 
 const CommentsContainer = ({ className, comments, postId }) => {
@@ -75,3 +77,9 @@ export const Comments = styled(CommentsContainer)`
         resize: none;
     }
 `;
+
+Comments.propTypes = {
+    comments:   PropTypes.arrayOf(PROP_TYPE.COMMENT),
+    postId: PropTypes.string.isRequired,
+
+};

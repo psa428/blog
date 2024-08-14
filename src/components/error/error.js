@@ -1,3 +1,4 @@
+import { PROP_TYPE } from '../../constants';
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -13,4 +14,9 @@ export const Error = ({ error }) =>
             <h2>Ошибка</h2>
             <div>{error}</div>
         </Div>
-     );   
+     );  
+     
+Error.propTypes = {
+    error:  PROP_TYPE.ERROR,
+    
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'; 
 import styled from "styled-components";
 import { Icon } from "../../../../../../components";
 import { useDispatch, useSelector } from "react-redux";
@@ -95,3 +96,11 @@ export const Comment = styled(CommentContainer)`
         display:   flex;
     }
 `;
+
+Comment.propTypes = {
+    postId: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    publishedAt: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+}
